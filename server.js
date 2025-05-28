@@ -65,12 +65,14 @@ app.use(cookieParser()); // Parse cookies attached to the client request
 //     credentials: true, // Enable if using cookies/auth
 //   })
 // );
+
 app.use(
   cors({
     origin: ["https://ephemeral-peony-67fbdb.netlify.app"], // Replace with your Netlify domain
     methods: ["GET", "POST"],
     credentials: true,
-  };
+  })
+);
 
 // Define a simple route to check if the API is working
 app.get("/", (req, res) => res.send("API is working"));
