@@ -53,18 +53,24 @@ app.use(cookieParser()); // Parse cookies attached to the client request
 //     credentials: true, // Allow cookies to be sent with requests
 //   })
 // );
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       if (!origin || allowedOrigins.includes(origin)) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//     credentials: true, // Enable if using cookies/auth
+//   })
+// );
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true, // Enable if using cookies/auth
-  })
-);
+    origin: ["https://ephemeral-peony-67fbdb.netlify.app"], // Replace with your Netlify domain
+    methods: ["GET", "POST"],
+    credentials: true,
+  };
 
 // Define a simple route to check if the API is working
 app.get("/", (req, res) => res.send("API is working"));
